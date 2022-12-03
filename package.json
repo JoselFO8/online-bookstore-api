@@ -1,5 +1,5 @@
 {
-  "name": "bookStore",
+  "name": "book-store",
   "version": "1.0.0",
   "description": "Backend Video tube",
   "main": "server.js",
