@@ -1,7 +1,7 @@
 const { matchedData } = require("express-validator") // Tomar solo las variables requeridas
 
 const { encrypt, compare } = require("../utils/handlePasword")
-const userModel = require("../models/users") 
+const userModel = require("../models/bookstore-users")
 const { tokenSign } = require("../utils/handleJwt")
 const { handleHttpError } = require("../utils/handleError")
 

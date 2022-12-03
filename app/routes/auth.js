@@ -5,7 +5,7 @@ const { validatorRegister, validatorLogin } = require("../validators/auth.js");
 const { registerControl, loginControl} = require("../controllers/auth.js");
 const authMiddleware = require("../middleware/session.js");
 
-const { getAllUsers } = require("../controllers/users.js");
+const { getAllUsers } = require("../controllers/bookstore-users");
 const checkRol = require("../middleware/rol.js");
 
 /**

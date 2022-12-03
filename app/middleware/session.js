@@ -1,6 +1,6 @@
 const { handleHttpError } = require("../utils/handleError")
 const { verifyToken } = require("../utils/handleJwt")
-const userModel = require("../models/users")
+const userModel = require("../models/bookstore-users")
 
 const authMiddleware = async (req, res, next) => {
     try {

@@ -9,9 +9,9 @@ const initDB = require('./config/db_mongo.js')
 const app = express()
 
 // Settings
-const port = process.env.PORT || 4000
+const PORT = process.env.PORT || 3001
 
-const whiteList = [
+const WHITE_LIST = [
     'http://localhost',
     'https://video-tube-client.vercel.app/'
 ]
@@ -37,8 +37,8 @@ app.use("/", require("./app/routes")) // Muestra index
 
 
 // Start the server
-app.listen(port, () => {
-    console.log(`La aplicacion esta corriendo en el puerto ${port}`);
+app.listen(PORT, () => {
+    console.log(`La aplicacion esta corriendo en el puerto ${PORT}`);
 })
 
 initDB();
