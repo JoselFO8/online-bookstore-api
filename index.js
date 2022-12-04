@@ -13,11 +13,10 @@ const PORT = process.env.PORT || 4000
 
 const whiteList = [
     'http://localhost',
-    'https://video-tube-client.vercel.app/'
 ]
 
 // Midlewaresserver 
-app.use(cors({origin: whiteList})) 
+app.use(cors()) 
 app.use(morgan('dev'));
 app.use( 
     bodyParser.json({
