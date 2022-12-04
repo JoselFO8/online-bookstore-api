@@ -9,32 +9,34 @@ const initDB = require('./config/db_mongo.js')
 const app = express()
 
 // Settings
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 4000
 
-const WHITE_LIST = [
+const whiteList = [
     'http://localhost',
     'https://video-tube-client.vercel.app/'
 ]
 
 // Midlewaresserver 
-app.use( // for parsing appication/x-www-form-urlencoded
+app.use(cors({origin: whiteList})) 
+app.use(morgan('dev'));
+app.use( 
+    bodyParser.json({
+        limit: '20mb' 
+    })
+)
+app.use( 
     bodyParser.urlencoded({
         limit: '20mb', 
         extended: true
     })
 )
-app.use( // for parsing json
-    bodyParser.json({
-        limit: '20mb' // Limite de 20 megas por peticion
-    })
-)
-app.use(morgan('dev'));
 app.use(express.json())
+app.use("/", require("./app/routes"))
 
-// app.use(cors({origin: whiteList})) // Para dar permisos a algunas URL's
-app.use(cors()) // Para dar permisos a algunas URL's
-app.use("/", require("./app/routes")) // Muestra index
-
+// Test de inicio 
+app.get("/", (req, res) => {
+    res.send("Test de inicio")
+})
 
 // Start the server
 app.listen(PORT, () => {
