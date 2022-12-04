@@ -8,8 +8,17 @@ const { parseId } = require("../utils/parseVariable")
 const multer = require("multer")
 const cloudinary = require("cloudinary")
 
+const urlStorage = () => { 
+    if(!process.env.PORT) {
+        return path.join(__dirname, "storage/uploads");
+    }
+    else {
+        return path.join(__dirname, `../../tmp/`);
+    }
+}
+
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, "storage/uploads"),
+    destination: urlStorage(),
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}${path.extname(file.originalname)}`)
     }
