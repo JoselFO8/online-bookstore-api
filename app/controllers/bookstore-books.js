@@ -19,8 +19,8 @@ const cloudinary = require("cloudinary")
 
 const storage = multer.diskStorage({
     // destination: urlStorage(),
-    // destination: !process.env.PORT ? path.join(__dirname, "storage/uploads") : path.join(__dirname, `../../tmp/`),
-    destination: path.join(__dirname, "storage/uploads"),
+    destination: process.env.PORT ? '/tmp/' : path.join(__dirname, "storage/uploads"),
+    // destination: path.join(__dirname, "storage/uploads"),
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}${path.extname(file.originalname)}`)
     }
